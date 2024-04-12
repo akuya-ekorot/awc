@@ -1,9 +1,9 @@
 import { parseArgs } from "util";
 
-export default function parse(args: string[]) {
+export default function parse() {
   try {
-    const { values } = parseArgs({
-      args,
+    const { values, positionals } = parseArgs({
+      allowPositionals: true,
       options: {
         c: {
           type: "boolean",
@@ -19,7 +19,7 @@ export default function parse(args: string[]) {
         },
       },
     });
-    return { data: { values }, error: null };
+    return { data: { values, positionals }, error: null };
   } catch (error) {
     return { data: null, error: error };
   }
