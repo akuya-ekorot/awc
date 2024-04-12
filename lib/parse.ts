@@ -6,16 +6,16 @@ export default function parse(args: string[]) {
       args,
       options: {
         c: {
-          type: "string",
+          type: "boolean",
         },
         l: {
-          type: "string",
+          type: "boolean",
         },
         w: {
-          type: "string",
+          type: "boolean",
         },
         m: {
-          type: "string",
+          type: "boolean",
         },
       },
     });
