@@ -8,6 +8,9 @@ export default function parse(args: string[]) {
         c: {
           type: "string",
         },
+        l: {
+          type: "string",
+        },
       },
     });
     return { data: { values }, error: null };

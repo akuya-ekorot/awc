@@ -1,10 +1,9 @@
-import * as fs from "fs";
+export async function countBytes(resolvedPath: string) {
+  const file = Bun.file(resolvedPath);
 
-export function countBytes(resolvedPath: string) {
-  try {
-    const { size } = fs.statSync(resolvedPath);
-    return { size, error: null };
-  } catch (error) {
-    return { size: null, error };
+  if (!(await file.exists())) {
+    return { size: null, error: `File ${resolvedPath} doesn't exits.` };
   }
+
+  return { size: file.size, error: null };
 }
