@@ -2,6 +2,7 @@
 
 import { countBytes } from "./lib/c";
 import { countLines } from "./lib/l";
+import { countCharacters } from "./lib/m";
 import parse from "./lib/parse";
 import { countWords } from "./lib/w";
 
@@ -38,5 +39,15 @@ if (data?.values.w) {
     Bun.write(Bun.stderr, error + "\n");
   } else {
     Bun.write(Bun.stdout, String(words) + "\n");
+  }
+}
+
+if (data?.values.m) {
+  const { chars, error } = await countCharacters(data.values.m);
+
+  if (error) {
+    Bun.write(Bun.stderr, error + "\n");
+  } else {
+    Bun.write(Bun.stdout, String(chars) + "\n");
   }
 }
