@@ -3,6 +3,7 @@
 import { countBytes } from "./lib/c";
 import { countLines } from "./lib/l";
 import parse from "./lib/parse";
+import { countWords } from "./lib/w";
 
 const { data, error } = parse(process.argv.slice(2));
 
@@ -27,5 +28,15 @@ if (data?.values.l) {
     Bun.write(Bun.stderr, error + "\n");
   } else {
     Bun.write(Bun.stdout, String(lines) + "\n");
+  }
+}
+
+if (data?.values.w) {
+  const { words, error } = await countWords(data.values.w);
+
+  if (error) {
+    Bun.write(Bun.stderr, error + "\n");
+  } else {
+    Bun.write(Bun.stdout, String(words) + "\n");
   }
 }

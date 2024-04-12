@@ -11,6 +11,9 @@ export default function parse(args: string[]) {
         l: {
           type: "string",
         },
+        w: {
+          type: "string",
+        },
       },
     });
     return { data: { values }, error: null };
